@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect, useCallback } from "react"
+import { useMediaQuery } from "@/hooks/use-mobile"
 
 interface UseSidebarOptions {
   defaultCollapsed?: boolean
@@ -10,28 +11,26 @@ interface UseSidebarOptions {
 }
 
 export function useSidebar(options: UseSidebarOptions = {}) {
-  const { defaultCollapsed = false, autoCollapse = true, autoCollapseDelay = 3000, mobileBreakpoint = 1024 } = options
+  const {
+    defaultCollapsed = false,
+    autoCollapse = true,
+    autoCollapseDelay = 3000,
+    mobileBreakpoint = 1024,
+  } = options
+
+  const isMobile = useMediaQuery(`(max-width:${mobileBreakpoint}px)`)
 
   const [isCollapsed, setIsCollapsed] = useState(defaultCollapsed)
   const [isHovered, setIsHovered] = useState(false)
   const [isPinned, setIsPinned] = useState(false)
-  const [isMobile, setIsMobile] = useState(false)
 
-  // 检测移动端
+  // 移动端首次加载时自动折叠
   useEffect(() => {
-    const checkMobile = () => {
-      const mobile = window.innerWidth < mobileBreakpoint
-      setIsMobile(mobile)
-      if (mobile) {
-        setIsCollapsed(true)
-        setIsPinned(false)
-      }
+    if (isMobile) {
+      setIsCollapsed(true)
+      setIsPinned(false)
     }
-
-    checkMobile()
-    window.addEventListener("resize", checkMobile)
-    return () => window.removeEventListener("resize", checkMobile)
-  }, [mobileBreakpoint])
+  }, [isMobile])
 
   // 自动收缩逻辑
   useEffect(() => {

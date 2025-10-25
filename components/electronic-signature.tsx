@@ -260,7 +260,7 @@ function MobileSignaturePad({ onSignatureChange, disabled = false }) {
     canvas.height = canvas.offsetHeight * 2
     ctx.scale(2, 2)
 
-    // 禁用默认的触摸行为
+    // 禁用默认的���摸行为
     canvas.addEventListener("touchstart", (e) => e.preventDefault())
     canvas.addEventListener("touchmove", (e) => e.preventDefault())
     canvas.addEventListener("touchend", (e) => e.preventDefault())

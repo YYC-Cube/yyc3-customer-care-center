@@ -146,7 +146,7 @@ export function FinanceModule() {
       amount: 180000,
       date: "2025-06-15",
       status: "completed",
-      category: "人力成本",
+      category: "��力成本",
     },
     {
       id: "5",
