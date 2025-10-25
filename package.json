@@ -3,17 +3,55 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "analyze": "ANALYZE=true next build",
+    "analyze:bundle": "next-bundle-analyzer",
+    "analyze:complexity": "es-complexity src",
+    "benchmark": "ts-node scripts/benchmark.ts",
+    "benchmark:compare": "ts-node scripts/benchmark-compare.ts",
+    "benchmark:production": "PRODUCTION_URL=$PRODUCTION_URL ts-node scripts/benchmark.ts",
     "build": "next build",
+    "db:backup": "ts-node scripts/db-backup.ts",
+    "db:backup:verify": "ts-node scripts/db-backup-verify.ts",
+    "db:check:integrity": "ts-node scripts/db-integrity-check.ts",
+    "db:migrate": "prisma migrate deploy",
+    "db:validate": "ts-node scripts/db-validate.ts",
     "dev": "next dev",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "format:check": "prettier --check \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
+    "health:check": "ts-node scripts/deploy-health-check.ts",
+    "postinstall": "prisma generate",
     "lint": "next lint",
+    "monitor:validate": "ts-node scripts/monitor-validate.ts",
+    "prepare": "husky install",
+    "size-limit": "size-limit",
     "start": "next start",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
+    "test:critical-path": "playwright test tests/critical-path",
+    "test:e2e": "playwright test",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:performance": "k6 run tests/performance/load-test.js",
+    "test:regression": "playwright test tests/regression",
+    "test:report": "vitest run --reporter=html",
+    "test:smoke": "ts-node scripts/smoke-test.ts",
+    "test:smoke:production": "PRODUCTION_URL=$PRODUCTION_URL ts-node scripts/smoke-test.ts",
     "test:ui": "vitest --ui",
+    "test:unit": "vitest run --coverage",
     "test:watch": "vitest --watch",
     "type-check": "tsc --noEmit"
   },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,css,md}": [
+      "prettier --write"
+    ]
+  },
   "dependencies": {
+    "@emotion/is-prop-valid": "latest",
+    "@prisma/client": "^5.0.0",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@radix-ui/react-label": "^2.0.2",
@@ -23,19 +61,28 @@
     "@radix-ui/react-sheet": "^1.0.4",
     "@radix-ui/react-slot": "^1.0.2",
     "@radix-ui/react-tabs": "^1.0.4",
+    "@sentry/nextjs": "^7.0.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "framer-motion": "latest",
+    "https": "latest",
     "lucide-react": "^0.454.0",
     "next": "14.0.0",
+    "perf_hooks": "latest",
     "react": "latest",
     "react-dom": "^18.2.0",
     "react-window": "latest",
     "recharts": "latest",
+    "redis": "^4.6.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "zod": "^3.22.0"
   },
   "devDependencies": {
+    "@next/bundle-analyzer": "^14.0.0",
+    "@playwright/test": "^1.40.0",
+    "@size-limit/preset-big-lib": "^10.0.0",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.1.2",
     "@testing-library/user-event": "^14.5.1",
@@ -48,10 +95,23 @@
     "autoprefixer": "^10.4.16",
     "eslint": "^8.52.0",
     "eslint-config-next": "14.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "husky": "^8.0.3",
     "jsdom": "^23.0.1",
+    "lint-staged": "^15.0.0",
     "postcss": "^8.5",
-    "tailwindcss": "^3.3.5",
+    "prettier": "^3.0.0",
+    "prisma": "^5.0.0",
+    "size-limit": "^10.0.0",
+    "tailwindcss": "^3.4.17",
+    "ts-node": "^10.9.0",
     "typescript": "^5",
     "vitest": "^1.0.0"
-  }
+  },
+  "size-limit": [
+    {
+      "path": ".next/static/chunks/**/*.js",
+      "limit": "500 KB"
+    }
+  ]
 }
