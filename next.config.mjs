@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  reactStrictMode: true,
+  swcMinify: true,
   experimental: {
     webpackBuildWorker: true,
     optimizeCss: true,
@@ -51,8 +53,8 @@ const nextConfig = {
   
   // 图片优化
   images: {
-    domains: ['localhost'],
-    formats: ['image/webp', 'image/avif'],
+    domains: ['blob.v0.app'],
+    formats: ['image/avif', 'image/webp'],
     unoptimized: true,
   },
 
@@ -94,6 +96,10 @@ const nextConfig = {
         ],
       },
     ]
+  },
+
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 }
 
