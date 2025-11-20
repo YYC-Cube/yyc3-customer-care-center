@@ -43,7 +43,7 @@
     "next": "15.0.3",
     "perf_hooks": "latest",
     "react": "latest",
-    "react-dom": "19.0.0",
+    "react-dom": "latest",
     "react-window": "latest",
     "recharts": "latest",
     "tailwind-merge": "^2.5.5",
