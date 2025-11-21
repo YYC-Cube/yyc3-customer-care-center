@@ -43,6 +43,9 @@ export function SidebarConfig({ onConfigChange }: SidebarConfigProps) {
 
   // 检测当前屏幕尺寸
   useEffect(() => {
+    // Check if window is defined (client-side only)
+    if (typeof window === 'undefined') return
+    
     const checkScreenSize = () => {
       const width = window.innerWidth
       if (width < config.responsiveBreakpoints.mobile) {
@@ -112,7 +115,7 @@ export function SidebarConfig({ onConfigChange }: SidebarConfigProps) {
             {getScreenIcon(currentScreenSize)}
             <span className="font-medium">当前屏幕: {currentScreenSize}</span>
           </div>
-          <Badge variant="outline">{window.innerWidth}px</Badge>
+          <Badge variant="outline">{typeof window !== 'undefined' ? window.innerWidth : 0}px</Badge>
         </div>
 
         {/* 行为模式选择 */}
