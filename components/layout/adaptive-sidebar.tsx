@@ -84,8 +84,8 @@ interface AdaptiveSidebarProps {
   collapsedWidth?: string
 }
 
-// 自适应侧边栏主组件
-export function AdaptiveSidebar({
+// 自适应侧边栏主组件 (内部实现)
+function AdaptiveSidebarInner({
   children,
   className,
   width = "280px",
@@ -150,6 +150,28 @@ export function AdaptiveSidebar({
       {/* 侧边栏内容 */}
       <div className="h-full overflow-y-auto">{children}</div>
     </motion.aside>
+  )
+}
+
+// 自适应侧边栏主组件 (带自动Provider包装)
+export function AdaptiveSidebar(props: AdaptiveSidebarProps) {
+  // 检查是否已经在SidebarProvider中，如果不是则自动包装
+  try {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const context = useContext(SidebarContext)
+    if (context) {
+      // 已经在Provider中，直接使用内部组件
+      return <AdaptiveSidebarInner {...props} />
+    }
+  } catch {
+    // 不在Provider中，需要包装
+  }
+  
+  // 没有Provider，自动包装一个
+  return (
+    <SidebarProvider>
+      <AdaptiveSidebarInner {...props} />
+    </SidebarProvider>
   )
 }
 

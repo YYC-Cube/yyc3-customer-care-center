@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { 
   Brain, TrendingUp, AlertTriangle, BarChart3, Activity, Users, 
   DollarSign, Lightbulb, ArrowUp, ArrowDown, CheckCircle, 
-  Clock, RefreshCcw, PlayCircle, Download, ChartLine, Info 
+  Clock, RefreshCcw, PlayCircle, Download, ChartLine, Info, Star 
 } from "lucide-react"
 
 interface PredictionModel {

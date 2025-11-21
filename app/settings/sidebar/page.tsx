@@ -1,5 +1,7 @@
 "use client"
 
+export const dynamic = 'force-dynamic'
+
 import { PageContainer } from "@/components/layout/page-container"
 import { SidebarConfig } from "@/components/sidebar-config"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
