@@ -156,15 +156,11 @@ function AdaptiveSidebarInner({
 // 自适应侧边栏主组件 (带自动Provider包装)
 export function AdaptiveSidebar(props: AdaptiveSidebarProps) {
   // 检查是否已经在SidebarProvider中，如果不是则自动包装
-  try {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const context = useContext(SidebarContext)
-    if (context) {
-      // 已经在Provider中，直接使用内部组件
-      return <AdaptiveSidebarInner {...props} />
-    }
-  } catch {
-    // 不在Provider中，需要包装
+  const context = useContext(SidebarContext)
+  
+  if (context) {
+    // 已经在Provider中，直接使用内部组件
+    return <AdaptiveSidebarInner {...props} />
   }
   
   // 没有Provider，自动包装一个
