@@ -1,3 +1,15 @@
+/**
+ * @file page-container.tsx
+ * @description page-container component/module for YYC3 Customer Care Center
+ * @module components.layout.page-container
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 import { cn } from "@/lib/utils"
 import { commonStyles } from "@/lib/design-system"
 import type { ReactNode } from "react"

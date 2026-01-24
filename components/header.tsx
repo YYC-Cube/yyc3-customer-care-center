@@ -1,3 +1,15 @@
+/**
+ * @file header.tsx
+ * @description header component/module for YYC3 Customer Care Center
+ * @module components.header
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import type React from "react"
@@ -40,9 +52,12 @@ import {
 interface HeaderProps {
   activeModule?: string
   className?: string
+  height?: number
+  sticky?: boolean
+  showOnMobile?: boolean
 }
 
-export function Header({ activeModule = "dashboard", className }: HeaderProps) {
+export function Header({ activeModule = "dashboard", className, height = 64, sticky = true, showOnMobile = true }: HeaderProps) {
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState("")
   const [isDarkMode, setIsDarkMode] = useState(false)
@@ -158,15 +173,17 @@ export function Header({ activeModule = "dashboard", className }: HeaderProps) {
   return (
     <header
       className={cn(
-        "bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 py-4 flex items-center justify-between shadow-sm",
+        "bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 px-6 flex items-center justify-between shadow-sm",
+        sticky ? "fixed top-0 left-0 right-0 z-40" : "relative",
+        !showOnMobile && "hidden lg:flex",
         className,
       )}
+      style={{ height: `${height}px` }}
     >
-      {/* 左侧：当前页面标题 */}
+      {/* 左侧：日期显示 */}
       <div className="flex items-center space-x-4">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900 dark:text-white">{getModuleTitle(activeModule)}</h1>
-          <p className="text-sm text-gray-500 dark:text-gray-400">
+          <p className="text-lg font-medium text-gray-900 dark:text-white">
             {new Date().toLocaleDateString("zh-CN", {
               year: "numeric",
               month: "long",

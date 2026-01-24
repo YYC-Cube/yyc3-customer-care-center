@@ -92,8 +92,8 @@ export class MobileNotificationService {
 
     const notificationOptions: NotificationOptions = {
       body: options.body,
-      icon: options.icon || "/images/yanyu-cloud-logo.png",
-      badge: options.badge || "/images/yanyu-cloud-logo.png",
+      icon: options.icon || "/yyc3-pwa-icon.png",
+      badge: options.badge || "/yyc3-pwa-icon.png",
       tag: options.tag,
       data: options.data,
       requireInteraction: true,

@@ -1,3 +1,15 @@
+/**
+ * @file mobile-layout.tsx
+ * @description mobile-layout component/module for YYC3 Customer Care Center
+ * @module components.mobile.mobile-layout
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import type React from "react"
@@ -259,7 +271,7 @@ function MobileMenu({
       <div className="p-6 border-b border-sky-200 bg-gradient-to-r from-sky-50 to-blue-50">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center space-x-3">
-            <img src="/images/yanyu-cloud-logo.png" alt="言语云" className="w-10 h-10 object-contain" />
+            <img src="/yyc3-pwa-icon.png" alt="言语云" className="w-10 h-10 object-contain" />
             <div>
               <h2 className="text-lg font-bold text-slate-800">言语云</h2>
               <p className="text-xs text-slate-500">企业管理系统</p>

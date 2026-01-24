@@ -1,6 +1,18 @@
+/**
+ * @file page.tsx
+ * @description page component/module for YYC3 Customer Care Center
+ * @module app.kpi.page
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-24
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
-import { AdaptiveSidebar } from "@/components/layout/adaptive-sidebar"
+import { ResponsiveLayout } from "@/components/layout/responsive-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -124,10 +136,10 @@ export default function KPIPage() {
   }
 
   return (
-    <AdaptiveSidebar defaultModule="kpi">
-      <div className="p-6 space-y-6 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 min-h-screen">
+    <ResponsiveLayout showSidebar={true} showHeader={true}>
+      <div className="px-6 pb-6 space-y-6 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50 min-h-screen">
         {/* 页面头部 */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center pt-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 flex items-center">
               <Target className="w-8 h-8 mr-3 text-orange-600" />
@@ -337,6 +349,6 @@ export default function KPIPage() {
           </Card>
         </div>
       </div>
-    </AdaptiveSidebar>
+    </ResponsiveLayout>
   )
 }

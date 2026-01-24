@@ -1,6 +1,18 @@
+/**
+ * @file page.tsx
+ * @description page component/module for YYC3 Customer Care Center
+ * @module app.ai.page
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-24
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
-import { AdaptiveSidebar } from "@/components/layout/adaptive-sidebar"
+import { ResponsiveLayout } from "@/components/layout/responsive-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -70,10 +82,10 @@ export default function AIPage() {
   }
 
   return (
-    <AdaptiveSidebar defaultModule="ai-analysis">
-      <div className="p-6 space-y-6 bg-gradient-to-br from-purple-50 via-violet-50 to-indigo-50 min-h-screen">
+    <ResponsiveLayout showSidebar={true} showHeader={true}>
+      <div className="px-6 pb-6 space-y-6 bg-gradient-to-br from-purple-50 via-violet-50 to-indigo-50 min-h-screen">
         {/* 页面头部 */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center pt-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 flex items-center">
               <Brain className="w-8 h-8 mr-3 text-purple-600" />
@@ -329,6 +341,6 @@ export default function AIPage() {
           </CardContent>
         </Card>
       </div>
-    </AdaptiveSidebar>
+    </ResponsiveLayout>
   )
 }

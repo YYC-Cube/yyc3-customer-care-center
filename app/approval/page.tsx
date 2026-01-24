@@ -1,6 +1,18 @@
+/**
+ * @file page.tsx
+ * @description page component/module for YYC3 Customer Care Center
+ * @module app.approval.page
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-24
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
-import { AdaptiveSidebar } from "@/components/layout/adaptive-sidebar"
+import { ResponsiveLayout } from "@/components/layout/responsive-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -132,10 +144,10 @@ export default function ApprovalPage() {
   const rejectedApprovals = approvals.filter((a) => a.status === "rejected").length
 
   return (
-    <AdaptiveSidebar defaultModule="approval">
-      <div className="p-6 space-y-6 bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50 min-h-screen">
+    <ResponsiveLayout showSidebar={true} showHeader={true}>
+      <div className="px-6 pb-6 space-y-6 bg-gradient-to-br from-blue-50 via-sky-50 to-cyan-50 min-h-screen">
         {/* 页面头部 */}
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center pt-6">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 flex items-center">
               <FileCheck className="w-8 h-8 mr-3 text-blue-600" />
@@ -333,6 +345,6 @@ export default function ApprovalPage() {
           </CardContent>
         </Card>
       </div>
-    </AdaptiveSidebar>
+    </ResponsiveLayout>
   )
 }

@@ -1,6 +1,18 @@
+/**
+ * @file page.tsx
+ * @description page component/module for YYC3 Customer Care Center
+ * @module app.finance.payments.page
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-24
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
-import { AdaptiveSidebar } from "@/components/layout/adaptive-sidebar"
+import { ResponsiveLayout } from "@/components/layout/responsive-layout"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -75,7 +87,7 @@ export default function PaymentsPage() {
   }
 
   return (
-    <AdaptiveSidebar defaultModule="payments">
+    <ResponsiveLayout showSidebar={true} showHeader={true}>
       <div className="space-y-6 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 min-h-screen p-6">
         {/* 页面标题 */}
         <div className="flex items-center justify-between">
@@ -207,6 +219,6 @@ export default function PaymentsPage() {
           </CardContent>
         </Card>
       </div>
-    </AdaptiveSidebar>
+    </ResponsiveLayout>
   )
 }

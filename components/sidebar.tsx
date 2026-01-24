@@ -1,3 +1,15 @@
+/**
+ * @file sidebar.tsx
+ * @description sidebar component/module for YYC3 Customer Care Center
+ * @module components.sidebar
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import { useState, useEffect } from "react"
@@ -5,6 +17,7 @@ import { useRouter, usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
+import { useLayoutContext } from "@/components/layout/responsive-layout"
 import {
   LayoutDashboard,
   BarChart3,
@@ -46,9 +59,9 @@ interface SidebarProps {
 export function Sidebar({ activeModule = "dashboard", setActiveModule, className }: SidebarProps) {
   const router = useRouter()
   const pathname = usePathname()
-  const [isCollapsed, setIsCollapsed] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
   const [isPinned, setIsPinned] = useState(false)
+  const { sidebarCollapsed, setSidebarCollapsed } = useLayoutContext()
 
   // 根据路径设置活跃模块
   useEffect(() => {
@@ -333,8 +346,8 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
   }
 
   const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed)
-    if (!isCollapsed) {
+    setSidebarCollapsed(!sidebarCollapsed)
+    if (!sidebarCollapsed) {
       setIsPinned(false)
     }
   }
@@ -342,14 +355,14 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
   const togglePin = () => {
     setIsPinned(!isPinned)
     if (!isPinned) {
-      setIsCollapsed(false)
+      setSidebarCollapsed(false)
     }
   }
 
   const handleMouseEnter = () => {
     if (!isPinned) {
       setIsHovered(true)
-      setIsCollapsed(false)
+      setSidebarCollapsed(false)
     }
   }
 
@@ -358,13 +371,13 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
       setIsHovered(false)
       setTimeout(() => {
         if (!isPinned) {
-          setIsCollapsed(true)
+          setSidebarCollapsed(true)
         }
       }, 300)
     }
   }
 
-  const sidebarWidth = isCollapsed && !isHovered ? "w-14" : "w-56"
+  const sidebarWidth = sidebarCollapsed && !isHovered ? "w-14" : "w-56"
 
   const getColorClasses = (color: string) => {
     const colorMap = {
@@ -430,7 +443,7 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
     <TooltipProvider>
       <aside
         className={cn(
-          "bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-full transition-all duration-300 ease-in-out flex flex-col shadow-lg",
+          "bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen transition-all duration-300 ease-in-out flex flex-col shadow-lg fixed top-0 left-0 z-50",
           sidebarWidth,
           className,
         )}
@@ -439,13 +452,13 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
       >
         {/* 顶部控制区域 */}
         <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
-          {(!isCollapsed || isHovered) && (
+          {(!sidebarCollapsed || isHovered) && (
             <div className="flex flex-col items-center space-y-1">
               <div
                 className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95"
                 onClick={handleLogoClick}
               >
-                <img src="/images/yanyu-cloud-3d-logo.png" alt="YYC Logo" className="w-full h-full object-contain" />
+                <img src="/yyc3-pwa-icon.png" alt="YYC Logo" className="w-full h-full object-contain" />
               </div>
               <div className="text-center">
                 <p className="text-xs font-semibold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-purple-500 to-blue-700 leading-tight">
@@ -455,18 +468,18 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
             </div>
           )}
 
-          {isCollapsed && !isHovered && (
+          {sidebarCollapsed && !isHovered && (
             <div className="flex justify-center w-full">
               <div
                 className="w-6 h-6 rounded-md flex items-center justify-center overflow-hidden cursor-pointer transition-all duration-300 hover:scale-110 hover:shadow-lg active:scale-95"
                 onClick={handleLogoClick}
               >
-                <img src="/images/yanyu-cloud-3d-logo.png" alt="YYC Logo" className="w-full h-full object-contain" />
+                <img src="/yyc3-pwa-icon.png" alt="YYC Logo" className="w-full h-full object-contain" />
               </div>
             </div>
           )}
 
-          {(!isCollapsed || isHovered) && (
+          {(!sidebarCollapsed || isHovered) && (
             <div className="flex items-center space-x-1">
               <Tooltip>
                 <TooltipTrigger asChild>
@@ -482,11 +495,11 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
               <Tooltip>
                 <TooltipTrigger asChild>
                   <Button variant="ghost" size="sm" onClick={toggleCollapse} className="p-1">
-                    {isCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
+                    {sidebarCollapsed ? <ChevronRight className="w-4 h-4" /> : <ChevronLeft className="w-4 h-4" />}
                   </Button>
                 </TooltipTrigger>
                 <TooltipContent side="right">
-                  <p>{isCollapsed ? "展开侧边栏" : "收缩侧边栏"}</p>
+                  <p>{sidebarCollapsed ? "展开侧边栏" : "收缩侧边栏"}</p>
                 </TooltipContent>
               </Tooltip>
             </div>
@@ -496,8 +509,8 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
         {/* 导航菜单 */}
         <nav className="flex-1 overflow-y-auto py-4 space-y-4">
           {menuItems.map((category) => (
-            <div key={category.category} className={cn("px-3", isCollapsed && !isHovered && "px-2")}>
-              {(!isCollapsed || isHovered) && (
+            <div key={category.category} className={cn("px-3", sidebarCollapsed && !isHovered && "px-2")}>
+              {(!sidebarCollapsed || isHovered) && (
                 <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-3">
                   {category.category}
                 </h3>
@@ -518,14 +531,14 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
                           className={cn(
                             "w-full transition-all duration-300 group relative",
                             // 展开状态样式
-                            (!isCollapsed || isHovered) && [
+                            (!sidebarCollapsed || isHovered) && [
                               "justify-start h-10 px-3 border-l-4 border-transparent",
                               isActive
                                 ? `${colors.border} ${colors.bg} ${colors.text} shadow-sm`
                                 : `hover:border-l-4 ${colors.hover} text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:shadow-xl hover:scale-105`,
                             ],
                             // 收缩状态样式
-                            isCollapsed &&
+                            sidebarCollapsed &&
                               !isHovered && [
                                 "justify-center h-10 w-10 mx-auto rounded-lg shadow-sm",
                                 `${colors.collapsedBg} ${colors.collapsedBorder} hover:shadow-md hover:scale-105`,
@@ -536,18 +549,18 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
                           <Icon
                             className={cn(
                               "flex-shrink-0 transition-colors duration-300",
-                              (!isCollapsed || isHovered) && "w-5 h-5",
-                              isCollapsed && !isHovered && `w-5 h-5 ${colors.iconColor}`,
+                              (!sidebarCollapsed || isHovered) && "w-5 h-5",
+                              sidebarCollapsed && !isHovered && `w-5 h-5 ${colors.iconColor}`,
                             )}
                           />
-                          {(!isCollapsed || isHovered) && (
+                          {(!sidebarCollapsed || isHovered) && (
                             <span className="ml-3 font-medium group-hover:translate-x-1 transition-all duration-300">
                               {item.label}
                             </span>
                           )}
                         </Button>
                       </TooltipTrigger>
-                      {isCollapsed && !isHovered && (
+                      {sidebarCollapsed && !isHovered && (
                         <TooltipContent side="right">
                           <p>{item.label}</p>
                         </TooltipContent>
@@ -562,7 +575,7 @@ export function Sidebar({ activeModule = "dashboard", setActiveModule, className
 
         {/* 底部状态 */}
         <div className="p-4 border-t border-gray-200 dark:border-gray-700">
-          {(!isCollapsed || isHovered) && (
+          {(!sidebarCollapsed || isHovered) && (
             <div className="flex items-center space-x-3 text-sm text-gray-500 dark:text-gray-400">
               <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
               <span>系统运行正常</span>

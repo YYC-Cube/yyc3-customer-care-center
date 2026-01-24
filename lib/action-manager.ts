@@ -122,7 +122,7 @@ class ActionManager {
               if ("Notification" in window && Notification.permission === "granted") {
                 new Notification("会议提醒", {
                   body: `会议"${data.title}"即将开始`,
-                  icon: "/images/yanyu-cloud-logo.png",
+                  icon: "/yyc3-pwa-icon.png",
                 })
               }
             },
@@ -171,7 +171,7 @@ class ActionManager {
       if ("Notification" in window && Notification.permission === "granted") {
         new Notification("系统通知", {
           body: data.message,
-          icon: "/images/yanyu-cloud-logo.png",
+          icon: "/yyc3-pwa-icon.png",
         })
       }
     }

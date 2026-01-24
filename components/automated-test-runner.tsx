@@ -1,3 +1,15 @@
+/**
+ * @file automated-test-runner.tsx
+ * @description automated-test-runner component/module for YYC3 Customer Care Center
+ * @module components.automated-test-runner
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import { useEffect, useState } from "react"

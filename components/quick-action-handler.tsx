@@ -1,3 +1,15 @@
+/**
+ * @file quick-action-handler.tsx
+ * @description quick-action-handler component/module for YYC3 Customer Care Center
+ * @module components.quick-action-handler
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import { useState, useEffect } from "react"
@@ -100,7 +112,7 @@ export function QuickActionHandler({ onActionComplete }: QuickActionHandlerProps
           if (permission === "granted") {
             new Notification("通知测试", {
               body: "通知功能测试成功！",
-              icon: "/images/yanyu-cloud-logo.png",
+              icon: "/yyc3-pwa-icon.png",
             })
             actionManager.trigger("notifications", { message: "通知功能测试成功！" })
           } else {
@@ -167,7 +179,7 @@ export function QuickActionHandler({ onActionComplete }: QuickActionHandlerProps
     if ("Notification" in window && Notification.permission === "granted") {
       new Notification("日程创建成功", {
         body: `会议"${scheduleData.title}"已创建`,
-        icon: "/images/yanyu-cloud-logo.png",
+        icon: "/yyc3-pwa-icon.png",
       })
     }
   }
@@ -204,7 +216,7 @@ export function QuickActionHandler({ onActionComplete }: QuickActionHandlerProps
     if ("Notification" in window && Notification.permission === "granted") {
       new Notification("资料更新成功", {
         body: "个人资料已成功更新",
-        icon: userAvatar || "/images/yanyu-cloud-logo.png",
+        icon: userAvatar || "/yyc3-pwa-icon.png",
       })
     }
   }
@@ -234,7 +246,7 @@ export function QuickActionHandler({ onActionComplete }: QuickActionHandlerProps
     if ("Notification" in window && Notification.permission === "granted") {
       new Notification("设置保存成功", {
         body: "系统设置已成功保存",
-        icon: "/images/yanyu-cloud-logo.png",
+        icon: "/yyc3-pwa-icon.png",
       })
     }
   }

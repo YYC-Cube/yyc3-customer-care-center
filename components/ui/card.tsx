@@ -1,3 +1,15 @@
+/**
+ * @file card.tsx
+ * @description card component/module for YYC3 Customer Care Center
+ * @module components.ui.card
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'

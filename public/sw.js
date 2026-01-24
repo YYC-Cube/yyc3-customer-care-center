@@ -2,7 +2,7 @@ const CACHE_NAME = "zuoyou-ems-v1.0.0"
 const OFFLINE_URL = "/offline"
 
 // 需要缓存的静态资源
-const STATIC_CACHE_URLS = ["/", "/offline", "/images/zuoyou-logo.png", "/manifest.json"]
+const STATIC_CACHE_URLS = ["/", "/offline", "/yyc3-pwa-icon.png", "/manifest.json"]
 
 // 需要缓存的API路径模式
 const API_CACHE_PATTERNS = [/^\/api\/dashboard/, /^\/api\/customers/, /^\/api\/tasks/, /^\/api\/approval/]
@@ -159,8 +159,8 @@ self.addEventListener("push", (event) => {
 
   const options = {
     body: event.data ? event.data.text() : "您有新的消息",
-    icon: "/images/zuoyou-logo.png",
-    badge: "/images/zuoyou-logo.png",
+    icon: "/yyc3-pwa-icon.png",
+    badge: "/yyc3-pwa-icon.png",
     vibrate: [100, 50, 100],
     data: {
       dateOfArrival: Date.now(),
@@ -170,12 +170,12 @@ self.addEventListener("push", (event) => {
       {
         action: "explore",
         title: "查看详情",
-        icon: "/images/zuoyou-logo.png",
+        icon: "/yyc3-pwa-icon.png",
       },
       {
         action: "close",
         title: "关闭",
-        icon: "/images/zuoyou-logo.png",
+        icon: "/yyc3-pwa-icon.png",
       },
     ],
   }

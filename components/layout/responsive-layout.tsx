@@ -1,3 +1,15 @@
+/**
+ * @file responsive-layout.tsx
+ * @description responsive-layout component/module for YYC3 Customer Care Center
+ * @module components.layout.responsive-layout
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import type React from "react"
@@ -103,9 +115,10 @@ export function ResponsiveLayout({
 
       {/* 主内容区域 */}
       <div
-        className="transition-all duration-300 ease-in-out"
+        className="transition-all duration-300 ease-in-out min-h-screen w-full"
         style={{
           marginLeft: getMainContentMargin(),
+          width: "100%",
         }}
       >
         {/* 头部 */}
@@ -119,10 +132,11 @@ export function ResponsiveLayout({
 
         {/* 页面内容 */}
         <main
-          className="min-h-screen"
+          className="min-h-screen w-full"
           style={{
-            paddingTop: showHeader ? `${layoutConfig.header.height}px` : "0",
+            width: "100%",
             ...getContentStyles(),
+            marginTop: showHeader && layoutConfig.header.sticky ? `${layoutConfig.header.height}px` : "0",
           }}
         >
           {children}

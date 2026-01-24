@@ -70,7 +70,7 @@ export class ButtonHandler {
     if ("Notification" in window && Notification.permission === "granted") {
       new Notification("操作提示", {
         body: message,
-        icon: "/images/yanyu-cloud-logo.png",
+        icon: "/yyc3-pwa-icon.png",
       })
     } else {
       alert(message)
@@ -82,7 +82,7 @@ export class ButtonHandler {
     if ("Notification" in window && Notification.permission === "granted") {
       new Notification("操作成功", {
         body: message,
-        icon: "/images/yanyu-cloud-logo.png",
+        icon: "/yyc3-pwa-icon.png",
       })
     } else {
       console.log("成功:", message)

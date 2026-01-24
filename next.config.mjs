@@ -55,11 +55,11 @@ const nextConfig = {
   staticPageGenerationTimeout: 180,
 
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
 
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   
   // Skip static optimization for pages with client-side dependencies

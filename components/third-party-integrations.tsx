@@ -1,3 +1,15 @@
+/**
+ * @file third-party-integrations.tsx
+ * @description third-party-integrations component/module for YYC3 Customer Care Center
+ * @module components.third-party-integrations
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import { useState } from "react"

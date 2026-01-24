@@ -1,3 +1,15 @@
+/**
+ * @file pwa-install-prompt.tsx
+ * @description pwa-install-prompt component/module for YYC3 Customer Care Center
+ * @module components.pwa-install-prompt
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import { useState, useEffect } from "react"
@@ -42,7 +54,7 @@ export function PWAInstallPrompt() {
       if ("serviceWorker" in navigator && "Notification" in window) {
         new Notification("ZUOYOU 企业管理系统", {
           body: "应用已成功安装到您的设备！",
-          icon: "/images/zuoyou-logo.png",
+          icon: "/yyc3-pwa-icon.png",
         })
       }
     }
@@ -107,7 +119,7 @@ export function PWAInstallPrompt() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 bg-gradient-to-r from-sky-400 to-blue-500 rounded-lg flex items-center justify-center">
-                <img src="/images/zuoyou-logo.png" alt="ZUOYOU" className="w-5 h-5 object-contain" />
+                <img src="/yyc3-pwa-icon.png" alt="ZUOYOU" className="w-5 h-5 object-contain" />
               </div>
               <div>
                 <CardTitle className="text-sm font-semibold text-slate-800">安装应用</CardTitle>

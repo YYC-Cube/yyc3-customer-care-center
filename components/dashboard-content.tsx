@@ -1,3 +1,15 @@
+/**
+ * @file dashboard-content.tsx
+ * @description dashboard-content component/module for YYC3 Customer Care Center
+ * @module components.dashboard-content
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -7,9 +19,9 @@ import { BarChart3, TrendingUp, Users, DollarSign, Target, Activity, ArrowUpRigh
 
 export function DashboardContent() {
   return (
-    <div className="p-6 space-y-6 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 min-h-screen">
+    <div className="px-6 pb-6 space-y-6 bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 min-h-screen">
       {/* 欢迎区域 */}
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between items-center pt-6">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 flex items-center">
             <BarChart3 className="w-8 h-8 mr-3 text-emerald-600" />

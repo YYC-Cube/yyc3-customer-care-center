@@ -1,3 +1,15 @@
+/**
+ * @file logo-manager.tsx
+ * @description logo-manager component/module for YYC3 Customer Care Center
+ * @module components.logo-manager
+ * @author YYC³ Team
+ * @version 1.0.0
+ * @created 2026-01-23
+ * @updated 2026-01-23
+ * @copyright Copyright (c) 2026 YYC³
+ * @license MIT
+ */
+
 "use client"
 
 import type React from "react"
@@ -22,7 +34,7 @@ interface LogoData {
 export function LogoManager({ onLogoChange }: LogoManagerProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [logoData, setLogoData] = useState<LogoData>({
-    url: "/images/yanyu-cloud-logo.png",
+    url: "/yyc3-pwa-icon.png",
     title: "言语云企业管理系统",
     subtitle: "YanYu Cloud Enterprise Management",
     type: "default",
@@ -91,7 +103,7 @@ export function LogoManager({ onLogoChange }: LogoManagerProps) {
 
   const handleReset = () => {
     const defaultData: LogoData = {
-      url: "/images/yanyu-cloud-logo.png",
+      url: "/yyc3-pwa-icon.png",
       title: "言语云企业管理系统",
       subtitle: "YanYu Cloud Enterprise Management",
       type: "default",
@@ -107,13 +119,13 @@ export function LogoManager({ onLogoChange }: LogoManagerProps) {
 
   const templates: LogoData[] = [
     {
-      url: "/images/yanyu-cloud-logo.png",
+      url: "/yyc3-pwa-icon.png",
       title: "言语云企业管理系统",
       subtitle: "YanYu Cloud Enterprise Management",
       type: "default",
     },
     {
-      url: "/images/zuoyou-logo.png",
+      url: "/yyc3-pwa-icon.png",
       title: "左右科技有限公司",
       subtitle: "ZuoYou Technology Co., Ltd.",
       type: "default",
@@ -153,7 +165,7 @@ export function LogoManager({ onLogoChange }: LogoManagerProps) {
                   className="h-12 w-auto object-contain"
                   onError={(e) => {
                     const target = e.target as HTMLImageElement
-                    target.src = "/images/yanyu-cloud-logo.png"
+                    target.src = "/yyc3-pwa-icon.png"
                   }}
                 />
                 <div>
